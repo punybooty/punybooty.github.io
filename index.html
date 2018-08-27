@@ -1,0 +1,29 @@
+<html>
+<head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+
+	<br><br>
+
+	<textarea rows="20" cols="100" placeholder="Encrypted message here..." id="file"></textarea>
+	<br>
+	<textarea rows="1" cols="100" placeholder="Passphrase here..." id="passphrase"></textarea>
+	<br>
+	<br>
+	<button onclick="punyDecrypt()">Decrypt!</button>
+	<br>
+	<div id="punyDecrypted"></div>
+</head>
+<body>
+<script type="text/javascript">
+	function punyDecrypt() {
+		var encrypted = document.getElementById("file").value;
+		var passphrase = document.getElementById("passphrase").value;
+		console.log(encrypted)
+		console.log(passphrase)
+		var decrypted = CryptoJS.AES.decrypt(encrypted, passphrase);
+		console.log(decrypted)
+		document.getElementById("punyDecrypted").innerHTML = decrypted.toString(CryptoJS.enc.Utf8)
+	}
+</script>
+</body>
+</html>
